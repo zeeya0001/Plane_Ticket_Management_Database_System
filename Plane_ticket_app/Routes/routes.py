@@ -1,5 +1,5 @@
 from flask import Blueprint
-from Plane_ticket_app.Controllers.controller import (
+from Controllers.controller import (
     PassengerController, FlightController, BookingController,
     ServiceController, SeatController, PaymentController,
     ReviewController, NotificationController, CancellationController

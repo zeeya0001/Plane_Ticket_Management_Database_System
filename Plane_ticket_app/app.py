@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from Plane_ticket_app.Models.model import db
-from Plane_ticket_app.Routes.routes import planeticket_bp
+# from utils.db_utils import db
+from Routes.routes import planeticket_bp
 import sys, os
 sys.path.append(os.getcwd())
 
@@ -18,11 +18,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
 # Initialize SQLAlchemy with the app
-db.init_app(app)
+# db.init_app(app)
 
 
 # Register the routes Blueprint
-app.register_blueprint(planeticket_bp)
+# app.register_blueprint(planeticket_bp)
 
 # Create the database tables
 # with app.app_context():
