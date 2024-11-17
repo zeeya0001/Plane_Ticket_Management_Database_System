@@ -1,33 +1,24 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-# from utils.db_utils import db
-from Routes.routes import planeticket_bp
+
 import sys, os
 sys.path.append(os.getcwd())
 
-
-print("Current working directory:", os.getcwd())
-print("Contents of current directory:", os.listdir())
-
+from flask import Flask
+from Plane_ticket_app.Routes.App_routes import planeticket_bp
+from shared.utils.db_utils import db
+import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Configure the SQLAlchemy part of the app instance
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@localhost//plane_ticket_app'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Joseph.reso812345@localhost/plane_ticket_app'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
-# Initialize SQLAlchemy with the app
-# db.init_app(app)
+db.init_app(app)
 
-
-# Register the routes Blueprint
-# app.register_blueprint(planeticket_bp)
-
-# Create the database tables
-# with app.app_context():
-#     db.create_all()
+app.register_blueprint(planeticket_bp)
 
 if __name__ == '__main__':
-    app.run(debug=True, port = 4000)
+    app.run(debug=True, port = 5000)
 
