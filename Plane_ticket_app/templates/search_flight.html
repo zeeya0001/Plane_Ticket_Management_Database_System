@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Flight Booking System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-blue-900 to-indigo-900">
+        <nav class="bg-white/10 backdrop-blur-md border-b border-white/20 py-4">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between">
+                    <a href="/" class="text-white text-2xl font-bold">Flight Booking System</a>
+                </div>
+            </div>
+        </nav>
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-xl mx-auto">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20">
+                    <h3 class="text-3xl font-bold text-white text-center mb-8">Find Your Flight</h3>
+                    <form action="/flight_get" method="GET" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="from" class="block text-white mb-2 font-medium">From</label>
+                                <input type="text" 
+                                    class="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-white placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                                    id="from" name="from" placeholder="Departure City" required>
+                            </div>
+                            <div>
+                                <label for="to" class="block text-white mb-2 font-medium">To</label>
+                                <input type="text" 
+                                    class="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-white placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                                    id="to" name="to" placeholder="Arrival City" required>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="date" class="block text-white mb-2 font-medium">Date</label>
+                                <input type="date" 
+                                    class="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                                    id="date" name="date" required>
+                            </div>
+                            <div>
+                                <label for="passengers" class="block text-white mb-2 font-medium">Passengers</label>
+                                <input type="number" 
+                                    class="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                                    id="passengers" name="passengers" min="1" placeholder="Number of passengers" required>
+                            </div>
+                        </div>
+                        <button type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition duration-300 font-medium text-lg mt-6">
+                            Search Flights
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cancel Booking</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body class="bg-gray-900 text-white">
+        <header class="bg-gray-700 p-4 flex justify-between">
+            <h1 class="text-4xl font-bold">Cancel Booking</h1>
+            <a href="/" class="hover:text-gray-300">Home</a>
+        </header>
+        <div class="container mx-auto p-4 w-40% mt-20 flex justify-center">
+            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20" action="/cancel_booking" method="post">
+                <h3 class="text-3xl font-bold text-center mb-8">Cancel Booking</h3>
+                <label for="Booking_ID" class="block mb-2 font-medium">Booking ID:</label>
+                <input type="text" name="Booking_ID" id="Booking_ID" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <label for="Amount_refunded" class="block mb-2 font-medium">Amount Refunded:</label>
+                <input type="number" name="Amount_refunded" id="Amount_refunded" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <label for="Reason" class="block mb-2 font-medium">Reason:</label>
+                <textarea name="Reason" id="Reason" rows="3" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent"></textarea>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Cancel Booking</button>
+            </form>
+        </div>
+
+        <script src="./script.js" async defer></script>
+    </body>
+</html>
+

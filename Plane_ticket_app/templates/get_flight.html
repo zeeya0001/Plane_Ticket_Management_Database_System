@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Get Flight</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div class="main flex justify-items-center bg-green-900 h-screen p-10 w-full ">
+            <div class="boxer flex flex-col m-auto bg-green-500 h-[80vh] shadow-md w-80 place-content-center rounded-lg">
+                <h1 class="m-auto mb-[-10px] text-[20px]">Get Flight</h1>
+                <form class="form flex flex-col gap-3 m-auto" action="{{url_for(planeticket_bp.get_flight_by_flight_name,flight_name=flight_name)}}" method="post">
+                    <label for="Flight_name">Flight_name</label>
+                    <input class="rounded-lg border-lime-800 border bg-transparent" type="text" name="Flight_name" id="">
+                    <button class="h-6 mt-4 bg-zinc-900 motion-safe:animate-bounce rounded text-white" type="submit">Find Flight</button>
+                </form>
+            </div>
+
+            <div class="show-flights bg-green-500 min-h-0 w-[60vw] my-auto max-h-[80vh] overflow-y-scroll shadow-md place-content-center text-center  rounded-lg">
+                <h1 class="my-8 text-[20px]">Available Flights</h1>
+                {% for flight in flights %}
+                    <a href="{{url_for(planeticket_bp.passenger_details, Flight_ID=flight.Flight_ID,no_of_passengers=no_of_passengers)}}" class="m-8 h-32 px-4 border rounded-md justify-between items-center flex gap-32">
+                        <div class="logo h-4">
+                            <svg class="w-4 h-4 bg-white rounded-md" alt="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.94737L22 14V16L14 13.4737V18.8333L17 20.5V22L12.5 21L8 22V20.5L11 18.8333V13.4737L3 16V14L11 8.94737V3.5C11 2.67157 11.6716 2 12.5 2C13.3284 2 14 2.67157 14 3.5V8.94737Z"></path></svg>
+                            <h2>{{ flight.Airline_name }}</h2>
+                        </div>
+                        <div class="time flex gap-4">
+                            <h1>{{ flight.departure_time }}</h1>
+                            <h1>{{ flight.arrival_time }}</h1>
+                        </div>
+                        <div class="price">
+                            <h1>Price: {{ flight.price }}</h1>
+                        </div>
+                    </a>
+                {% endfor %}
+            
+            </div>
+
+        <script src="./script.js" async defer></script>
+    </body>
+</html>
+

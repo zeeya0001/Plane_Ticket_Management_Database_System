@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-4 flex flex-col items-center">
+        <h1 class="text-3xl font-bold mb-4">Delete Review</h1>
+        <form action="{{url_for(planeticket_bp.delete_review)}}" method="post" class="flex flex-col">
+            <label for="Review_ID" class="block text-white mb-2 font-medium">Review ID:</label>
+            <input type="number" name="Review_ID" id="Review_ID" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white p-4 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition duration-300 font-medium text-lg mt-6">Delete Review</button>
+        </form>
+    </div>
+</body>
+</html>

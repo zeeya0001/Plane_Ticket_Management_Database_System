@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin: 0 auto;
+            width: 40%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container h-full w-full">
+        <div class="bg-green-100 border flex flex-col h-40 pt-10 mt-56 border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline mt-4">Your ticket has been booked successfully!! <br> with booking id: <span class="font-bold "> {{ booking_id }} </span>.</span>
+            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <a href="{{ url_for('planeticket_bp.home') }}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded-full">Go Home</a>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
+

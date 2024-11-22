@@ -1,0 +1,18 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.boxer {
+    animation-name: anime;
+    transform: skewY(8deg);
+}
+
+.form,h1 {
+    transform: skewY(-8deg);
+}
+
+@keyframes anime {
+    0% {
+    }
+}
