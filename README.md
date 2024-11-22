@@ -46,8 +46,8 @@ Progress:
        Now, the app server will be started running at port 4000,
        open any browser and type this url: localhost:4000
 
-    Enjoy our Team's  Skybooker..😎
 
-    Thank You
-          
+Enjoy our Team's **Skybooker..** 😎
+
+Thank You
     
