@@ -1,0 +1,11 @@
+start
+
+Home 
+    :->    
+        login/register and find flight 
+                                      :->
+                                          if login or register :-> search flight
+
+                                          or 
+
+                                          find flight :-> book flight :-> payment :-> booking done.
