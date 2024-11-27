@@ -7,15 +7,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="./style.css">
     </head>
     <body class="bg-gray-900 text-white">
         <header class="bg-gray-700 p-4 flex justify-between">
             <h1 class="text-4xl font-bold">Cancel Booking</h1>
-            <a href="/" class="hover:text-gray-300">Home</a>
+            <a href="/" class="hover:text-gray-300 border border-white/20 rounded-lg p-2">Home</a>
         </header>
         <div class="container mx-auto p-4 w-40% mt-20 flex justify-center">
-            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20" action="/cancel_booking" method="post">
+            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20" action="{{ url_for('planeticket_bp.cancel_booking') }}" method="post">
                 <h3 class="text-3xl font-bold text-center mb-8">Cancel Booking</h3>
                 <label for="Booking_ID" class="block mb-2 font-medium">Booking ID:</label>
                 <input type="text" name="Booking_ID" id="Booking_ID" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">

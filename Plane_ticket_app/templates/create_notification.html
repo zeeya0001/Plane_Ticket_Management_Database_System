@@ -7,37 +7,32 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="./style.css">
     </head>
-    <body>
-        <div class="main flex bg-green-900 h-[150vh] place-content-center pt-16 w-full ">
-            <div class="boxer fixed flex flex-col bg-green-500 h-[80vh] shadow-md w-80 place-content-center rounded-lg">
-                <h1 class="m-auto mb-[-10px] text-[20px]">Create Notification</h1>
-                <form class="form flex flex-col gap-3 m-auto" action="/notification" method="post">
-                    <label for="Passenger_ID">Passenger ID</label>
-                    <input class="rounded-lg border-lime-800 border bg-transparent" type="text" name="Passenger_ID" id="Passenger_ID" required>
-                    <label for="Message">Message</label>
-                    <textarea class="rounded-lg border-lime-800 border bg-transparent" name="Message" id="Message" rows="3" required></textarea>
-                    <label for="Status">Status</label>
-                    <select class="rounded-lg border-lime-800 border bg-transparent" name="Status" id="Status" required>
-                        <option value="pending">Pending</option>
-                        <option value="delivered">Delivered</option>
-                    </select>
-                    <button class="h-6 mt-4 bg-zinc-900 motion-safe:animate-bounce rounded text-white" type="submit">Create Notification</button>
-                </form>
-            </div>
+    <body class="bg-gray-900 text-white">
+        <header class="bg-gray-700 p-4 flex justify-between">
+            <h1 class="text-4xl font-bold">Create Notification</h1>
+            <a href="/" class="hover:text-gray-300 border border-white/20 rounded-lg p-2">Home</a>
+        </header>
+        <div class="container mx-auto p-4 w-40% mt-20 flex justify-center">
+            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20" action="/notification" method="post">
+                <h3 class="text-3xl font-bold text-center mb-8">Create Notification</h3>
+                
+                <label for="Passenger_ID" class="block mb-2 font-medium">Passenger ID:</label>
+                <input type="text" name="Passenger_ID" id="Passenger_ID" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                
+                <label for="Message" class="block mb-2 font-medium">Message:</label>
+                <textarea name="message" id="message" rows="3" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent"></textarea>
+                
+                <label for="Status" class="block mb-2 font-medium">Status:</label>
+                <select name="Status" id="Status" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                    <option value="pending">Pending</option>
+                    <option value="delivered">Delivered</option>
+                </select>
+                
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full mt-4">Create Notification</button>
+            </form>
         </div>
 
         <script src="./script.js" async defer></script>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-

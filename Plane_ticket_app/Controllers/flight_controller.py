@@ -5,7 +5,7 @@ from Plane_ticket_app.templates.passenger_views import PassengerView
 class FlightController:
     @staticmethod
     def get_flight_by_Flight_name(Flight_name):
-        flight = FlightService.get_flight_by_Flight_name(Flight_name)
+        flight = FlightService.get_flight_by_flight_name(Flight_name)
         if not flight: # if flight is None:
             return render_template('render.html', message='No flights found for the given name'), 404
         return render_template('get_flight.html', flight=flight), 200
@@ -33,12 +33,12 @@ class FlightController:
         Date=data.get('Date')
 
         flight = FlightService.create_flight(Flight_name,  Departure_Time, Arrival_Time, Year_of_Services, Airline_name, Origin_AP_name, Destination_AP_name, Flight_type, total_seats_available, Flight_Status, Date)
-        return render_template('render.html', message=PassengerView.render_success('flight created successfully')), 201
+        return render_template('render.html', message='flight created successfully.'), 201
     @staticmethod
     def get_flight_by_Origin_and_Destination_AP_name(Origin_AP_name, Destination_AP_name,Date, no_of_passengers):
         flights = FlightService.get_flight_by_Origin_and_Destination_AP_name(Origin_AP_name, Destination_AP_name,Date)
+        print(flights)
         if not flights: # if flight is None:
-            return render_template('render.html', message='No flights found for the given origin and destination or date'), 404
-        if len(flights) > 0:
-            return render_template('get_flight.html',flight=flights[0],no_of_passengers=no_of_passengers), 200
-
+            return render_template('render.html', message='No flights found for the given origin and destination or date.'), 404
+                
+        return render_template('get_flight.html',flights=flights,no_of_passengers=no_of_passengers), 200

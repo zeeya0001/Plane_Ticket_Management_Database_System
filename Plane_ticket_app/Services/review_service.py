@@ -11,8 +11,8 @@ class ReviewService:
         return new_review
 
     @staticmethod
-    def get_review_by_id(Review_ID):
-        return Review.query.filter_by(Review_ID)
+    def get_review_by_Review_ID(Review_ID):
+        return Review.query.filter_by(Review_ID=Review_ID).first()
 
     @staticmethod
     def get_all_reviews():
@@ -20,7 +20,7 @@ class ReviewService:
 
     @staticmethod
     def delete_review(Review_ID):
-        review = Review.query.filter_by(Review_ID)
+        review = Review.query.filter_by(Review_ID=Review_ID).first()
         if review:
             db.session.delete(review)
             db.session.commit()

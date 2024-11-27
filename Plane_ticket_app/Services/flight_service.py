@@ -1,3 +1,4 @@
+from flask import render_template
 from shared.models.flight_model import Flight
 from shared.utils.db_utils import db
 
@@ -12,7 +13,7 @@ class FlightService:
 
     @staticmethod
     def get_flight_by_id(Flight_ID):
-        return Flight.query.filter_by(Flight_ID)
+        return Flight.query.filter_by(Flight_ID=Flight_ID).first()
 
     @staticmethod
     def get_flight_by_flight_name(Flight_name):

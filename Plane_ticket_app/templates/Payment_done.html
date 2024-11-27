@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Success</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        .container {
-            margin: 0 auto;
-            width: 40%;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <div class="container h-full w-full">
-        <div class="bg-green-100 border flex flex-col h-40 pt-10 mt-56 border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline mt-4">Your ticket has been booked successfully!! <br> with booking id: <span class="font-bold "> {{ booking_id }} </span>.</span>
-            <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                <a href="{{ url_for('planeticket_bp.home') }}" class="text-white bg-green-500 hover:bg-green-700 font-bold py-2 px-4 rounded-full">Go Home</a>
-            </span>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Payment Success</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-900 text-white">
+        <header class="bg-gray-700 p-4 flex justify-between">
+            <h1 class="text-4xl font-bold">Payment Success</h1>
+            <a href="/" class="hover:text-gray-300 border border-white/20 rounded-lg p-2">Home</a>
+        </header>
+        <div class="container mx-auto p-4 w-40% mt-20 flex justify-center">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20">
+                <h3 class="text-3xl font-bold text-center mb-8">Booking Successful!</h3>
+                <p class="text-center text-xl mb-4">Your ticket has been booked successfully!</p>
+                <p class="text-center mb-8">Booking ID: <span class="font-bold">{{ booking_id }}</span></p>
+                <a href="{{ url_for('planeticket_bp.ticket', booking_id=booking_id,Flight_ID=Flight_ID,no_of_passengers=no_of_passengers) }}" class="block w-full text-center bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full mb-4">View Ticket</a>
+                <a href="/" class="block w-full text-center bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Return Home</a>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
-

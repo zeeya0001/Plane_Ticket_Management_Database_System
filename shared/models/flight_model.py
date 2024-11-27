@@ -15,4 +15,3 @@ class Flight(db.Model):
     total_seats_available = db.Column(db.Integer, nullable=False)
     Flight_Status = db.Column(db.String(20), nullable=False)
     Date = db.Column(db.Date)
-    

@@ -1,4 +1,5 @@
 from flask import render_template,request,redirect,url_for
+from Plane_ticket_app.Services.passenger_services import PassengerService
 
 class PassengerController:
     @staticmethod
@@ -17,24 +18,25 @@ class PassengerController:
 
     @staticmethod
     def create_passenger():
-        number_of_passengers = int(request.form.get('number_of_passengers', 1))
-        
-        for _ in range(number_of_passengers):
-            First_name = request.form.get('First_name', '')
-            Last_name = request.form.get('Last_name', '')
-            Passport_number = request.form.get('Passport_number')
-            gender = request.form.get('gender')
-            age = request.form.get('age')
-            disabilities = request.form.get('disabilities')
-            Mobile_Number = request.form.get('Mobile_Number')
-            seat_number = request.form.get('seat_number')
+        no_of_passengers = int(request.args.get('no_of_passengers', 1))
+        Flight_ID = request.args.get('Flight_ID')
+
+        for i in range(1,no_of_passengers):
+            First_name = request.form.get('First_name_{i}', '')
+            Last_name = request.form.get('Last_name_{i}', '')
+            Passport_number = request.form.get('Passport_number_{i}')
+            gender = request.form.get('gender_{i}')
+            age = request.form.get('age_{i}')
+            disabilities = request.form.get('disabilities_{i}')
+            Mobile_Number = request.form.get('Mobile_Number_{i}')
+            seat_number = request.form.get('seat_number_{i}')
 
             if not all([First_name, Last_name, Passport_number, gender, age, disabilities, Mobile_Number, seat_number]):
                 return render_template('render.html', message="Missing required fields"), 400
 
             PassengerService.create_passenger(First_name, Last_name, Passport_number, gender, age, disabilities, Mobile_Number, seat_number)
 
-        return render_template('payment.html', number_of_passengers=number_of_passengers,price=1000*number_of_passengers), 201
+        return render_template('payment.html', no_of_passengers=no_of_passengers, price=1000*no_of_passengers, Flight_ID=Flight_ID), 201
 
     @staticmethod
     def login_passenger():

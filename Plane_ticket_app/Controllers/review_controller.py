@@ -4,7 +4,7 @@ from Plane_ticket_app.templates.passenger_views import PassengerView
 
 class ReviewController:
     @staticmethod
-    def get_review():
+    def get_review_by_Review_ID():
         Review_ID = request.form.get('Review_ID')
         review = ReviewService.get_review_by_Review_ID(Review_ID)
         if not review:
@@ -18,6 +18,8 @@ class ReviewController:
         Content = request.form.get('Content')
 
         review = ReviewService.create_review(Passenger_ID, Rating, Content)
+        if not review.Passenger_ID:
+            return render_template('render.html', message='passenger not found'), 404
         return render_template('render.html', message='review created successfully'), 201
 
     @staticmethod
@@ -37,15 +39,17 @@ class ReviewController:
         notification_type = "text"
         
         result = ReviewService.create_notification(Passenger_ID, message, status, notification_type)
-        return render_template('render.html', message='notification created successfully'), 201
+        if not result.Passenger_ID:
+            return render_template('render.html', message='passenger not found'), 404
+        return render_template('render.html', message='notification sent successfully'), 201
 
     @staticmethod
-    def get_notifications(Passenger_ID):
+    def get_notifications():
         Passenger_ID = request.form.get('Passenger_ID')
         notification = ReviewService.get_notifications(Passenger_ID)
         if not notification:
             return render_template('render.html', message='notification not found'), 404
-        return render_template('get_notification.html', notifications=notification), 200
+        return render_template('get_notification.html', notification=notification), 200
 
     @staticmethod
     def mark_as_read(Notification_ID):

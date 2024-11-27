@@ -10,6 +10,4 @@ class Payment(db.Model):
     UPI_ID = db.Column(db.String(30), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     Status = db.Column(db.String(10))
-    Booking_ID = db.Column(db.Integer, db.ForeignKey('booking.Booking_ID'), nullable=False)
-
-    
+    Booking_ID = db.Column(db.Integer,nullable=False)

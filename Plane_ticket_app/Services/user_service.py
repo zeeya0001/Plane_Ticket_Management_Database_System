@@ -1,8 +1,9 @@
+from flask import jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from shared.models.user_model import User
 from shared.utils.db_utils import db
 from shared.utils.auth_utils import create_access_token
-# from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, unset_jwt_cookies
 
 class UserService:
     @staticmethod

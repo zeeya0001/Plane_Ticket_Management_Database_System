@@ -11,5 +11,3 @@ class Passenger(db.Model):
     Mobile_Number = db.Column(db.String(10), unique=True, nullable=False)
     Passport_number = db.Column(db.String(20), nullable=False, unique=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-
-    

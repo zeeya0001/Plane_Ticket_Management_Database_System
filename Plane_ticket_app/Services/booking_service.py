@@ -14,7 +14,7 @@ class BookingService:
         flight = Flight.query.get(Flight_ID)
         if not flight:
             return {"message": "Flight not found", "status": 404}
-        if flight.total_seats_available < Number_of_seats:
+        if int(flight.total_seats_available) < int(Number_of_seats):
             return {"message": "Not enough seats available", "status": 400}
 
         # Check if passenger exists
@@ -22,7 +22,7 @@ class BookingService:
         if not passenger:
             return {"message": "Passenger not found", "status": 404}
 
-        flight.total_seats_available -= Number_of_seats
+        flight.total_seats_available -= int(Number_of_seats)
 
         # Create a new booking
         book_ticket = Booking(

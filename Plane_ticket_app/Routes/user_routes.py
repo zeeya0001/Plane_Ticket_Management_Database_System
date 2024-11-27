@@ -1,9 +1,11 @@
-from flask import Blueprint
+from flask import Blueprint, render_template, request
 from Plane_ticket_app.Controllers.user_controller import UserController
 from Plane_ticket_app.middleware.auth_middleware import admin_required
+from flask_login import login_required, current_user, logout_user, login_user
 
 user_bp = Blueprint('user_bp', __name__)
 
+@login_required
 @user_bp.route('/user/<int:user_id>', methods=['GET'])
 def get_user(user_id):
     return UserController.get_user(user_id)
@@ -23,7 +25,11 @@ def register():
 def login():
     return UserController.login()
 
-@user_bp.route('/admin', methods=['GET'])
+@user_bp.route('/user/logout', methods=['GET'])
+def logout():
+    return UserController.logout()
+
 @admin_required
+@user_bp.route('/admin', methods=['GET'])
 def admin_dashboard():
     return render_template('admin.html'), 200

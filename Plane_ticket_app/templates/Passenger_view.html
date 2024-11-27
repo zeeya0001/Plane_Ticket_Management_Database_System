@@ -1,45 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Passenger Details</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-{% extends "home.html" %}
-
-{% block content %}
-<div class="container mx-auto px-4 py-16">
-    <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20">
-        <h1 class="text-3xl font-bold text-white text-center mb-8">Passenger Details</h1>
-        {% if passengers %}
-            {% for passenger in passengers %}
-                <div class="text-center mb-6 border border-gray-300 rounded-lg p-4 max-w-fit flex">
-                    <p class="text-gray-700 text-lg">Passenger ID: {{ passenger.Passenger_ID }}</p>
-                    <p class="text-gray-700 text-lg">Name: {{ passenger.first_name }} {{ passenger.last_name }}</p>
-                    <p class="text-gray-700 text-lg">Email: {{ passenger.email }}</p>
-                    <p class="text-gray-700 text-lg">Passport Number: {{ passenger.passport_number }}</p>
-                    <p class="text-gray-700 text-lg">Seat Number: {{ passenger.seat_number }}</p>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Passenger Details</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-900 text-white">
+        <header class="bg-gray-700 p-4 flex justify-between">
+            <h1 class="text-4xl font-bold">Passenger Details</h1>
+            <a href="/" class="hover:text-gray-300 border border-white/20 rounded-lg p-2">Home</a>
+        </header>
+        <div class="container mx-auto p-4 mt-20">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20">
+                <h3 class="text-3xl font-bold text-center mb-8">Passenger Details</h3>
+                {% if passengers %}
+                    {% for passenger in passengers %}
+                        <div class="mb-6 p-4 border border-white/20 rounded-lg">
+                            <p class="text-white mb-2">Passenger ID: {{ passenger.Passenger_ID }}</p>
+                            <p class="text-white mb-2">Name: {{ passenger.first_name }} {{ passenger.last_name }}</p>
+                            <p class="text-white mb-2">Email: {{ passenger.email }}</p>
+                            <p class="text-white mb-2">Passport Number: {{ passenger.passport_number }}</p>
+                            <p class="text-white mb-2">Seat Number: {{ passenger.seat_number }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center">
+                        <h1 class="text-2xl font-bold text-red-500 mb-4">Passenger Not Found</h1>
+                        <p class="text-white">{{ error_message }}</p>
+                    </div>
+                {% endif %}
+                
+                <div class="flex justify-center gap-4 mt-8">
+                    <a href="/bookings" class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full">View Bookings</a>
+                    <a href="/" class="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Return to Home</a>
                 </div>
-            {% endfor %}
-        {% else %}
-            <div class="text-center">
-                <h1 class="text-2xl font-bold text-red-600 mb-4">Passenger Not Found</h1>
-                <p class="text-white">{{ error_message }}</p>
             </div>
-        {% endif %}
-        
-        <div class="mt-8 text-center">
-            <a href="/bookings" class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-600 transition duration-300 mr-2">
-                View Bookings
-            </a>
-            <a href="/" class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full hover:from-blue-600 hover:to-indigo-600 transition duration-300">
-                Return to Home
-            </a>
         </div>
-    </div>
-</div>
-{% endblock %}
-</body>
 
+        <script src="./script.js" async defer></script>
+    </body>
+</html>

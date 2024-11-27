@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Get Notification</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 min-h-screen flex items-center justify-center">
-    <div class="container m-auto p-4 w-[25%] h-[40vh] flex justify-center backdrop-blur-sm bg-white/5 shadow-md rounded-md">
-        <div class="flex flex-col items-center justify-center">
-            <h1 class="text-2xl font-bold mb-4 ">Get Notification</h1>
-            <form action="{{plane_ticket_app.get_notification}}" method="post" class="flex flex-col gap-4">
-                <label for="Passenger_ID" class="block text-gray-700 text-sm font-bold mb-0">Passenger_ID:</label>
-                <input type="text" id="notification_id" name="Passenger_ID" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-4 rounded focus:outline-none focus:shadow-outline">Get Notification</button>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Get Notification</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-900 text-white">
+        <header class="bg-gray-700 p-4 flex justify-between">
+            <h1 class="text-4xl font-bold">Get Notification</h1>
+            <a href="/" class="hover:text-gray-300 border border-white/20 rounded-lg p-2">Home</a>
+        </header>
+        <div class="container mx-auto p-4 w-40% mt-20 flex justify-center">
+            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20" action="{{url_for('planeticket_bp.get_notifications',Passenger_ID=Passenger_ID)}}" method="post">
+                <h3 class="text-3xl font-bold text-center mb-8">Get Notification</h3>
+                <label for="Passenger_ID" class="block mb-2 font-medium">Passenger ID:</label>
+                <input type="text" name="Passenger_ID" id="notification_id" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full mt-4">Get Notification</button>
             </form>
         </div>
-    </div>
-</body>
-</html>
 
+        {% if notification %}
+        <div class="container mx-auto p-4 w-40% mt-5 flex justify-center">
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20">
+                <h2 class="text-2xl font-bold text-center mb-4">Notifications</h2>
+                <ul class="list-disc pl-2    flex flex-col">
+                   {% for notification in notification %}
+                    <span class="mb-2">{{ notification.message }}</span>
+                    <span class="mb-2"> - {{ notification.created_at }}</span>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+            <div class="container mx-auto p-4 mt-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 text-center">
+                    <h2 class="text-2xl font-bold text-red-500 mb-4">No Notifications Available</h2>
+                </div>
+            </div>
+        {% endif %}
+
+        <script src="./script.js" async defer></script>
+    </body>
+</html>

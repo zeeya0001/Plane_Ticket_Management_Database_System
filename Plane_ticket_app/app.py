@@ -3,7 +3,7 @@ import sys, os
 sys.path.append(os.getcwd())
 
 from flask import Flask
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager,jwt_required
 from Plane_ticket_app.config.config import Config
 from Plane_ticket_app.Routes.app_routes import planeticket_bp
 from Plane_ticket_app.Routes.user_routes import user_bp

@@ -1,9 +1,19 @@
+import random
 from flask import request, jsonify, render_template
 from datetime import datetime
 from Plane_ticket_app.Services.booking_service import BookingService
 from Plane_ticket_app.templates.passenger_views import PassengerView
+from shared.models.flight_model import Flight
+from shared.models.passenger_model import Passenger
+from Plane_ticket_app.Services.flight_service import FlightService
 
 class BookingController:
+    @staticmethod
+    def ticket(Flight_ID, no_of_passengers):
+        
+        Flight = FlightService.get_flight_by_id(Flight_ID=Flight_ID)
+        return render_template('ticket.html', flight = Flight, no_of_passengers=no_of_passengers)
+
     @staticmethod
     def book_ticket():
         Flight_ID = request.form.get('Flight_ID')
@@ -40,8 +50,8 @@ class BookingController:
         return render_template('get_booking.html', booking=booking), 200
 
     @staticmethod
-    def process_payment():
-        # Booking_ID = request.form.get('Booking_ID')
+    def process_payment(no_of_passengers, Flight_ID):
+        Booking_ID = random.randint(1000, 9999)
         Amount = request.form.get('amount')
         Payment_Method = request.form.get('Payment_Method')
         UPI_ID = request.form.get('UPI_ID')
@@ -51,7 +61,7 @@ class BookingController:
 
         payment = BookingService.process_payment(Booking_ID, Amount, Payment_Method, UPI_ID)
         if payment:
-            return render_template('payment_done.html', booking_id=Booking_ID), 201
+            return render_template('payment_done.html', booking_id=Booking_ID,no_of_passengers=no_of_passengers,Flight_ID=Flight_ID), 201
 
         return render_template('render.html', message='Payment processing failed'), 500
 
