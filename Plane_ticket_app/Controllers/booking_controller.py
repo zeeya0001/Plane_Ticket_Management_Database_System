@@ -6,13 +6,16 @@ from Plane_ticket_app.templates.passenger_views import PassengerView
 from shared.models.flight_model import Flight
 from shared.models.passenger_model import Passenger
 from Plane_ticket_app.Services.flight_service import FlightService
+from Plane_ticket_app.Services.passenger_services import PassengerService
+
 
 class BookingController:
     @staticmethod
-    def ticket(Flight_ID, no_of_passengers):
+    def ticket(Flight_ID, no_of_passengers,p_id):
         
         Flight = FlightService.get_flight_by_id(Flight_ID=Flight_ID)
-        return render_template('ticket.html', flight = Flight, no_of_passengers=no_of_passengers)
+        Passenger = PassengerService.get_passenger_by_Passenger_ID(Passenger_ID=p_id)
+        return render_template('ticket.html', flight = Flight, no_of_passengers=no_of_passengers, passenger=Passenger)
 
     @staticmethod
     def book_ticket():
@@ -50,7 +53,7 @@ class BookingController:
         return render_template('get_booking.html', booking=booking), 200
 
     @staticmethod
-    def process_payment(no_of_passengers, Flight_ID):
+    def process_payment(no_of_passengers, Flight_ID, p_id):
         Booking_ID = random.randint(1000, 9999)
         Amount = request.form.get('amount')
         Payment_Method = request.form.get('Payment_Method')
@@ -61,7 +64,7 @@ class BookingController:
 
         payment = BookingService.process_payment(Booking_ID, Amount, Payment_Method, UPI_ID)
         if payment:
-            return render_template('payment_done.html', booking_id=Booking_ID,no_of_passengers=no_of_passengers,Flight_ID=Flight_ID), 201
+            return render_template('payment_done.html', booking_id=Booking_ID,no_of_passengers=no_of_passengers,Flight_ID=Flight_ID,p_id=p_id), 201
 
         return render_template('render.html', message='Payment processing failed'), 500
 

@@ -15,76 +15,87 @@
         </header>
 
         <div class="container mx-auto p-4 mt-20 max-w-6xl flex gap-8">
-            
-            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 w-[60%]" action="{{url_for('planeticket_bp.create_passenger',Flight_ID=Flight_ID ,no_of_passengers=no_of_passengers)}}" method="post">
+            <form class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 w-[60%]" action="{{url_for('planeticket_bp.create_passenger',Flight_ID=Flight_ID ,no_of_passengers=1)}}" method="post">
                 <div class="max-h-[600px] overflow-y-auto w-full">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        {% for i in range(no_of_passengers) %}
-                        <div class="bg-white/5 p-6 rounded-xl">
-                            <h3 class="text-2xl font-bold text-center mb-6">Passenger {{ i+1 }} Details</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="first_name_{{ i+1 }}" class="block mb-2 font-medium">First Name:</label>
-                                    <input type="text" name="First_name_{{ i+1 }}" id="first_name_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                </div>
+                    <div class="bg-white/5 p-6 rounded-xl">
+                        <h3 class="text-2xl font-bold text-center mb-6">Passenger Details</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="first_name" class="block mb-2 font-medium">First Name:</label>
+                                <input type="text" name="First_name" id="first_name" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            </div>
                                 
-                                <div>
-                                    <label for="last_name_{{ i+1 }}" class="block mb-2 font-medium">Last Name:</label>
-                                    <input type="text" name="Last_name_{{ i+1 }}" id="last_name_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                </div>
+                            <div>
+                                <label for="last_name" class="block mb-2 font-medium">Last Name:</label>
+                                <input type="text" name="Last_name" id="last_name" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            </div>
                                 
-                                <div>
-                                    <label for="age_{{ i+1 }}" class="block mb-2 font-medium">Age:</label>
-                                    <input type="number" name="age_{{ i+1 }}" id="age_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                </div>
+                            <div>
+                                <label for="age" class="block mb-2 font-medium">Age:</label>
+                                <input type="number" name="age" id="age" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            </div>
                                 
-                                <div>
-                                    <label for="gender_{{ i+1 }}" class="block mb-2 font-medium">Gender:</label>
-                                    <select name="gender_{{ i+1 }}" id="gender_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                        <option class="text-gray-800" value="Male">Male</option>
-                                        <option class="text-gray-800" value="Female">Female</option>
-                                        <option class="text-gray-800" value="Other">Other</option>
-                                    </select>
-                                </div>
+                            <div>
+                                <label for="gender" class="block mb-2 font-medium">Gender:</label>
+                                <select name="gender" id="gender" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                                    <option class="text-gray-800" value="Male">Male</option>
+                                    <option class="text-gray-800" value="Female">Female</option>
+                                    <option class="text-gray-800" value="Other">Other</option>
+                                </select>
+                            </div>
                                 
-                                <div>
-                                    <label for="disability_{{ i+1 }}" class="block mb-2 font-medium">Disability:</label>
-                                    <select name="disability_{{ i+1 }}" id="disability_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                        <option class="text-gray-800" value="None">None</option>
-                                        <option class="text-gray-800" value="WheelChair">WheelChair</option>
-                                        <option class="text-gray-800" value="GuideDog">GuideDog</option>
-                                        <option class="text-gray-800" value="MedicalOxygen">MedicalOxygen</option>
-                                        <option class="text-gray-800" value="Other">Other</option>
-                                    </select>
-                                </div>
+                            <div>
+                                <label for="disability" class="block mb-2 font-medium">Disability:</label>
+                                <select name="disabilities" id="disability" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                                    <option class="text-gray-800" value="None">None</option>
+                                    <option class="text-gray-800" value="WheelChair">WheelChair</option>
+                                    <option class="text-gray-800" value="GuideDog">GuideDog</option>
+                                    <option class="text-gray-800" value="MedicalOxygen">MedicalOxygen</option>
+                                    <option class="text-gray-800" value="Other">Other</option>
+                                </select>
+                            </div>
                                 
-                                <div>
-                                    <label for="seat_number_{{ i+1 }}" class="block mb-2 font-medium">Seat Number:</label>
-                                    <input type="text" name="seat_number_{{ i+1 }}" id="seat_number_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                </div>
+                            <div>
+                                <label for="Seat_number" class="block mb-2 font-medium">Seat Number:</label>
+                                <input type="text" name="S_no" id="Seat_number" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                            </div>
                                 
-                                <div class="sm:col-span-2">
-                                    <label for="passport_number_{{ i+1 }}" class="block mb-2 font-medium">Passport Number:</label>
-                                    <input type="text" name="Passport_number_{{ i+1 }}" id="Passport_number_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                </div>
+                            <div class="sm:col-span-2">
+                                <label for="passport_number" class="block mb-2 font-medium">Passport Number:</label>
+                                <input 
+                                    type="text" 
+                                    id="Passport_number" 
+                                    name="Passport_number" 
+                                    pattern="[A-Z][1-9][0-9]\s?[0-9]{4}[1-9]" 
+                                    title="Enter valid passport number, starting with a capital case alphabet." 
+                                    required
+                                    class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                                >
+                            </div>
 
-                                <div class="sm:col-span-2">
-                                    <label for="mobile_number_{{ i+1 }}" class="block mb-2 font-medium">Mobile Number:</label>
-                                    <input type="tel" name="Mobile_Number_{{ i+1 }}" id="Mobile_Number_{{ i+1 }}" required class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                                </div>
+                            <div class="sm:col-span-2">
+                                <label for="mobile_number" class="block mb-2 font-medium">Mobile Number:</label>
+                                <input 
+                                    class="w-full bg-white/5 border border-white/20 rounded-lg p-3 placeholder-white/50 focus:ring-2 focus:ring-blue-400 focus:border-transparent"  
+                                    type="tel" 
+                                    id="Mobile_Number" 
+                                    name="Mobile_Number" 
+                                    pattern="[6-9][0-9]{9}" 
+                                    title="Enter valid phone number." 
+                                    maxlength="10" 
+                                    required
+                                >
                             </div>
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
-                
                 <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full mt-8">Submit</button>
             </form>
             <div class="bg-white/10 backdrop-blur-md rounded-2xl shadow-xl p-8 border border-white/20 mb-8 mt-8 w-[40%] h-fit">
                 <h3 class="text-3xl font-bold text-center mb-8">Ticket Details</h3>
-                <p class="mb-2">Number of Passengers: {{ no_of_passengers }}</p>
+                <p class="mb-2">Number of Passengers: 1</p>
                 <p class="mb-2">Price for One Ticket: ₹1000</p>
-                <p class="mb-4">Total Amount: ₹{{ no_of_passengers * 1000 }}</p>
+                <p class="mb-4">Total Amount: ₹1000</p>
             </div>
         </div>
 

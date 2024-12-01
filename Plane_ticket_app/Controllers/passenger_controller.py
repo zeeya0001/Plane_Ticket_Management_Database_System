@@ -21,22 +21,26 @@ class PassengerController:
         no_of_passengers = int(request.args.get('no_of_passengers', 1))
         Flight_ID = request.args.get('Flight_ID')
 
-        for i in range(1,no_of_passengers):
-            First_name = request.form.get('First_name_{i}', '')
-            Last_name = request.form.get('Last_name_{i}', '')
-            Passport_number = request.form.get('Passport_number_{i}')
-            gender = request.form.get('gender_{i}')
-            age = request.form.get('age_{i}')
-            disabilities = request.form.get('disabilities_{i}')
-            Mobile_Number = request.form.get('Mobile_Number_{i}')
-            seat_number = request.form.get('seat_number_{i}')
+        form_data = request.form
+        First_name = form_data.get('First_name', '').strip()
+        Last_name = form_data.get('Last_name', '').strip()
+        Passport_number = form_data.get('Passport_number')
+        gender = form_data.get('gender')
+        age = form_data.get('age')
+        disabilities = form_data.get('disabilities', 'None')  # Default to 'None' if not specified
+        Mobile_Number = form_data.get('Mobile_Number')
+        S_no = form_data.get('S_no')
 
-            if not all([First_name, Last_name, Passport_number, gender, age, disabilities, Mobile_Number, seat_number]):
-                return render_template('render.html', message="Missing required fields"), 400
+        if not all([First_name, Last_name, Passport_number, gender, age, disabilities, Mobile_Number]):
+            return render_template('render.html', message="Missing required fields"), 400
 
-            PassengerService.create_passenger(First_name, Last_name, Passport_number, gender, age, disabilities, Mobile_Number, seat_number)
+        PassengerService.create_passenger(First_name=First_name, Last_name=Last_name, Passport_number=Passport_number, gender=gender, age=age, disabilities=disabilities, Mobile_Number=Mobile_Number, Seat_number=S_no)
 
-        return render_template('payment.html', no_of_passengers=no_of_passengers, price=1000*no_of_passengers, Flight_ID=Flight_ID), 201
+        passengers = PassengerService.get_all_passengers()
+        passengers.sort(key=lambda x: x.Passenger_ID, reverse=True)  # Sort by ID in descending order
+        newest_passenger_id = passengers[0].Passenger_ID if passengers else None
+
+        return render_template('payment.html', no_of_passengers=no_of_passengers, price=1000*no_of_passengers, Flight_ID=Flight_ID,p_id=newest_passenger_id), 201
 
     @staticmethod
     def login_passenger():

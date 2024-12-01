@@ -5,7 +5,6 @@ from shared.models.flight_model import Flight
 from shared.models.payment_model import Payment
 from shared.models.cancellation_model import Cancellation
 from shared.models.seatMatrix_model import SeatMatrix
-from shared.models.service_model import Services
 from shared.utils.db_utils import db
 
 class BookingService:
@@ -45,7 +44,7 @@ class BookingService:
         db.session.add(book_ticket)
         db.session.commit()
         
-        return {"message": "Booking successful", "booking_id": booking.Booking_ID}
+        return {"message": "Booking successful", "booking_id": Booking.Booking_ID}
 
     @staticmethod
     def get_booking_by_id(Booking_ID):
@@ -91,36 +90,3 @@ class BookingService:
     def get_payment_status(Booking_ID):
         payment = Payment.query.filter_by(Booking_ID=Booking_ID).first()
         return payment.Status if payment else "No payment found"
-
-
-    @staticmethod
-    def create_service(Service_name, about_service, Airport_ID, Booking_ID):
-        new_services = Flight(Service_name=Service_name, about_service=about_service, Airport_ID=Airport_ID, Booking_ID=Booking_ID)
-        db.session.add(new_services)
-        db.session.commit()
-        return new_services
-
-    @staticmethod
-    def get_all_services():
-        return Services.query.all()
-    
-    
-    @staticmethod
-    def update_service(Service_ID, about_service):
-        service = Services.query.filter_by(Service_ID=Service_ID, about_service=about_service).first()
-        if service:
-            for key, value in data.items():
-                setattr(service, key, value)
-            db.session.commit()
-            return service
-        return None
-    
-    @staticmethod
-    def delete_service(Service_ID):
-        service = Services.query.filter_by(Service_ID=Service_ID).first()
-        if service:
-            db.session.delete(service)
-            db.session.commit()
-            return True
-        return False
-

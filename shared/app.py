@@ -23,6 +23,5 @@ from shared.models import passenger_model
 from shared.models import payment_model
 from shared.models import review_model
 from shared.models import seatMatrix_model
-from shared.models import service_model
 from shared.models import user_model
 

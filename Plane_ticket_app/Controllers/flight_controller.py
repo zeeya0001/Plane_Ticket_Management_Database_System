@@ -34,6 +34,7 @@ class FlightController:
 
         flight = FlightService.create_flight(Flight_name,  Departure_Time, Arrival_Time, Year_of_Services, Airline_name, Origin_AP_name, Destination_AP_name, Flight_type, total_seats_available, Flight_Status, Date)
         return render_template('render.html', message='flight created successfully.'), 201
+    
     @staticmethod
     def get_flight_by_Origin_and_Destination_AP_name(Origin_AP_name, Destination_AP_name,Date, no_of_passengers):
         flights = FlightService.get_flight_by_Origin_and_Destination_AP_name(Origin_AP_name, Destination_AP_name,Date)

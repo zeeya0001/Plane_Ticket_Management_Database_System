@@ -18,7 +18,8 @@
                 <h3 class="text-3xl font-bold text-center mb-8">Booking Successful!</h3>
                 <p class="text-center text-xl mb-4">Your ticket has been booked successfully!</p>
                 <p class="text-center mb-8">Booking ID: <span class="font-bold">{{ booking_id }}</span></p>
-                <a href="{{ url_for('planeticket_bp.ticket', booking_id=booking_id,Flight_ID=Flight_ID,no_of_passengers=no_of_passengers) }}" class="block w-full text-center bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full mb-4">View Ticket</a>
+                <a href="{{ url_for('planeticket_bp.ticket', booking_id=booking_id,Flight_ID=Flight_ID,no_of_passengers=no_of_passengers,p_id=p_id) }}" class="block w-full text-center bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full mb-4">View Ticket</a>
+                <p>{{ Flight_ID }}</p>
                 <a href="/" class="block w-full text-center bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded-full">Return Home</a>
             </div>
         </div>

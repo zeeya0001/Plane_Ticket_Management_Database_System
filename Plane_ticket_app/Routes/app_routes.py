@@ -8,6 +8,7 @@ from Plane_ticket_app.Controllers.review_controller import ReviewController
 from Plane_ticket_app.Controllers.flight_controller import FlightController
 from Plane_ticket_app.Controllers.user_controller import UserController
 
+
 planeticket_bp = Blueprint('planeticket_bp', __name__)
 
 @planeticket_bp.route('/', methods=['GET'])
@@ -28,9 +29,11 @@ def login():
     elif request.method == 'POST':
         return UserController.login()
 
-@planeticket_bp.route('/ticket/<int:Flight_ID>/<int:no_of_passengers>', methods=['GET'])
-def ticket(Flight_ID,no_of_passengers):
-    return BookingController.ticket(Flight_ID=Flight_ID, no_of_passengers=no_of_passengers)
+
+
+@planeticket_bp.route('/ticket/<int:Flight_ID>/<int:no_of_passengers>/<int:p_id>', methods=['GET'])
+def ticket(Flight_ID,no_of_passengers,p_id):
+    return BookingController.ticket(Flight_ID=Flight_ID, no_of_passengers=no_of_passengers,p_id=p_id)
 
 # Booking Routes
 @admin_required
@@ -49,12 +52,13 @@ def get_booking():
     elif request.method == 'POST':
         return BookingController.get_booking()
 
-@planeticket_bp.route('/payment/<int:Flight_ID>/<int:no_of_passengers>', methods=['GET', 'POST'])
-def process_payment(Flight_ID,no_of_passengers):
+@planeticket_bp.route('/payment/<int:Flight_ID>/<int:no_of_passengers>/<int:p_id>', methods=['GET', 'POST'])
+def process_payment(Flight_ID,no_of_passengers,p_id):
     if request.method == 'GET':
         return render_template('payment.html')
     elif request.method == 'POST':
-        return BookingController.process_payment(Flight_ID,no_of_passengers)
+        print(Flight_ID)
+        return BookingController.process_payment(Flight_ID,no_of_passengers,p_id)
 
 @planeticket_bp.route('/payment/status/<int:Booking_id>', methods=['GET'])
 def payment_status(Booking_id):
@@ -117,7 +121,7 @@ def get_passenger():
 def get_all_passengers():
     return PassengerController.get_all_passengers()
 
-@admin_required
+
 @planeticket_bp.route('/passenger/create', methods=['GET', 'POST'])
 def create_passenger():
     if request.method == 'GET':

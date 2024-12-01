@@ -5,8 +5,8 @@ class Flight(db.Model):
     __tablename__ = 'flight'
     Flight_ID = db.Column(db.Integer, primary_key=True)
     Flight_name = db.Column(db.String(50), nullable=False)
-    Departure_Time = db.Column(db.DateTime, nullable=False)
-    Arrival_Time = db.Column(db.DateTime, nullable=False)
+    Departure_Time = db.Column(db.Time, nullable=False)
+    Arrival_Time = db.Column(db.Time, nullable=False)
     Year_of_Services = db.Column(db.Integer, nullable=False)
     Airline_name = db.Column(db.String(50), nullable=False)
     Origin_AP_name = db.Column(db.String(100), nullable=False)

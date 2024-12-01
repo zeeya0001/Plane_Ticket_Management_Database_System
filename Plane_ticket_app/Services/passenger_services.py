@@ -4,9 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class PassengerService:
     @staticmethod
-    def create_passenger(Email, password, First_name, Last_name, Passport_number, age, disabilities, Mobile_Number):
-        hashed_password = generate_password_hash(password)
-        new_passenger = Passenger(Email=Email, password_hash=hashed_password, First_name=First_name, Last_name=Last_name, Passport_number=Passport_number, age=age, disabilities=disabilities, Mobile_Number=Mobile_Number)
+    def create_passenger(First_name, Last_name, Passport_number, age, gender, disabilities, Mobile_Number, Seat_number):
+        new_passenger = Passenger(First_name=First_name, Last_name=Last_name, Passport_number=Passport_number, age=age, gender=gender, disabilities=disabilities, Mobile_Number=Mobile_Number,seat_number=Seat_number)
         db.session.add(new_passenger)
         db.session.commit()
 
