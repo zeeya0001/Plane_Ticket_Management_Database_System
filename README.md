@@ -1,23 +1,5 @@
 <h1>Topic: Plane_ticket_management_database_system</h1>
 
-------------------------------------------------------
-
-ER-diagram:
-
-Progress:
-1. I did research for our project.
-2. I determine the entities, attributes, relationships and mapping/cardinalities.
-3. I made ER-diagram for that.
-4. created the database.
-5. created the tables.
-6. inserted the values.
-7. wrote the queries.
-8. took the screenshots and uploaded on github.
-
-9. Now, I started working on the backend part of the app.
-10. serveyed the google for similar flight ticket booking apps/websites
-11. after whole process our app is completed now, so, if anyone want to test it.
-
     here's the precedure to run the app:
     1. open the vs code or any other code editor and open the directory in which you want to work.
     2. open terminal manually or press "ctrl + shift + `"
