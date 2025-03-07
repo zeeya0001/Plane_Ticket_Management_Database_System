@@ -1,4 +1,4 @@
-import logging
+mport logging
 from logging.config import fileConfig
 
 from flask import current_app
